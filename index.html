@@ -51,6 +51,8 @@
         /* Subtle Cursor Interactive Glow */
         .cursor-glow {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 150px;
             height: 150px;
             background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
@@ -633,12 +635,12 @@
             <span class="close" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
             <h2 class="title">Project Requirements</h2>
             <form id="requirementsForm">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="text" placeholder="WhatsApp Number" required>
-                <input type="text" placeholder="Project Type (e.g., Brand Identity, UI Design)" required>
-                <input type="text" placeholder="Estimated Budget" required>
-                <textarea rows="4" placeholder="Describe your creative requirements and scope..." required></textarea>
+                <input type="text" id="clientName" placeholder="Your Name" required>
+                <input type="email" id="clientEmail" placeholder="Your Email" required>
+                <input type="text" id="clientWhatsapp" placeholder="WhatsApp Number" required>
+                <input type="text" id="projectType" placeholder="Project Type (e.g., Brand Identity, UI Design)" required>
+                <input type="text" id="projectBudget" placeholder="Estimated Budget" required>
+                <textarea rows="4" id="projectDesc" placeholder="Describe your creative requirements and scope..." required></textarea>
                 <button class="btn" type="submit" style="width: 100%; justify-content: center;">Send Project Brief</button>
             </form>
         </div>
@@ -685,10 +687,36 @@
             if (e.target === popup) closePopup();
         });
 
-        // Fully functional Submission Mockup behavior
+        // Fully functional Submission WhatsApp redirection behavior
         reqForm.addEventListener('submit', e => {
             e.preventDefault();
-            alert('Thank you, Shamroz Mughal will contact you shortly regarding your project request details!');
+            
+            // Getting form values
+            const name = document.getElementById('clientName').value;
+            const email = document.getElementById('clientEmail').value;
+            const whatsappNum = document.getElementById('clientWhatsapp').value;
+            const type = document.getElementById('projectType').value;
+            const budget = document.getElementById('projectBudget').value;
+            const desc = document.getElementById('projectDesc').value;
+
+            // Formatting message for WhatsApp
+            const message = `*New Project Order Received!*%0A%0A` +
+                            `*Name:* ${name}%0A` +
+                            `*Email:* ${email}%0A` +
+                            `*Client WhatsApp:* ${whatsappNum}%0A` +
+                            `*Project Type:* ${type}%0A` +
+                            `*Estimated Budget:* ${budget}%0A` +
+                            `*Description:* ${desc}`;
+
+            // Your WhatsApp number (with country code, without + or spaces)
+            const myWhatsAppNumber = "923144661989";
+            
+            // Constructing the API URL
+            const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${message}`;
+
+            // Open WhatsApp in a new window/tab
+            window.open(whatsappUrl, '_blank');
+
             reqForm.reset();
             closePopup();
         });
