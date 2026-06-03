@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shamroz Mughal | Creative Graphic Designer & Developer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #050811;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --primary: #ffd700;
+            --primary-glow: rgba(255, 215, 0, 0.3);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Abstract Premium Background Mesh */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(255, 215, 0, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 35%, rgba(0, 229, 255, 0.06), transparent 30%),
+                radial-gradient(circle at 50% 80%, rgba(255, 215, 0, 0.05), transparent 35%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Subtle Cursor Interactive Glow */
+        .cursor-glow {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            mix-blend-mode: screen;
+            transition: transform 0.1s linear;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 8, 17, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--primary); }
+
+        /* Header Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Professional Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, var(--primary), #ffaa00);
+            background-color: var(--primary);
+            color: #050811;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        section {
+            padding: 100px 10%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img-container {
+            position: relative;
+        }
+
+        .about-img-container::before {
+            content: '';
+            position: absolute;
+            inset: 10px -10px -10px 10px;
+            border: 2px solid var(--primary);
+            border-radius: 24px;
+            z-index: -1;
+        }
+
+        .about img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            display: block;
+            object-fit: cover;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .skill-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 215, 0, 0.3);
+            background: rgba(17, 24, 39, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .work-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            aspect-ratio: 4/3;
+            background: #111827;
+            cursor: pointer;
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .work-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5, 8, 17, 0.95) 20%, rgba(5, 8, 17, 0.4));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .work-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .work-card:hover .work-overlay {
+            opacity: 1;
+        }
+
+        .work-overlay h4 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .work-overlay p {
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .stat-box {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .stat-box:hover {
+            border-color: rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .stat-box h3 {
+            color: var(--primary);
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Contact Cards Layout */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.05);
+        }
+
+        .contact-method i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .contact-method div p:first-child {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .contact-method div p:last-child {
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        /* Popup Modal Clean Minimal Design */
+        .popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 5, 11, 0.85);
+            backdrop-filter: blur(15px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+
+        .popup-box {
+            background: #0f1422;
+            padding: 40px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 550px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .popup-box .title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .popup-box .title::after { left: 0; transform: none; }
+
+        .popup-box input, .popup-box textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 16px;
+            background: #171e2e;
+            color: #fff;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            outline: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .popup-box input:focus, .popup-box textarea:focus {
+            border-color: var(--primary);
+            background: #1c2539;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .close:hover { color: var(--primary); }
+
+        /* Lightbox Preview */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 5, 11, 0.95);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .lightbox img {
+            max-width: 85%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 35px;
+            background: #03050b;
+            border-top: 1px solid rgba(255, 215, 0, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media(max-width: 992px){
+            .about, .contact-container { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: 3.2rem; }
+        }
+
+        @media(max-width: 768px){
+            section { padding: 70px 6%; }
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 15px 6%; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor-glow"></div>
+
+    <nav>
+        <a href="#" class="logo">ShamrozCreatesOfficial<span>.</span></a>
+        <a href="#portfolio" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">Portfolio</a>
+    </nav>
+
+    <header>
+        <div class="hero" data-aos="zoom-out" data-aos-duration="1200">
+            <h1>Hi, I'm <span>Shamroz Mughal</span></h1>
+            <p>Professional Graphic Designer & Branding Specialist</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#portfolio" class="btn">Explore Work <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2 class="title" data-aos="fade-up">About Me</h2>
+        <div class="about">
+            <div class="about-img-container" data-aos="fade-right" data-aos-duration="1000">
+                <img src="image7.jpg" alt="Shamroz Mughal Profile Workspace">
+            </div>
+            <div class="about-text" data-aos="fade-left" data-aos-duration="1000">
+                <h3>Crafting Identities, Designing Realities</h3>
+                <p>
+                    I am a passionate Graphic Designer specializing in Logo Design,
+                    Brand Identity, Social Media Posts, Print Design, Menu Cards,
+                    Flyers, Posters and Creative Visual Solutions.
+                </p>
+                <p>
+                    I translate complex brand visions into modern, eye-catching, and highly strategic digital assets. By balancing grid systems with infinite creativity, I help brands stand out and leave a lasting impression on their core audience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="title" data-aos="fade-up">Expertise & Stack</h2>
+        <div class="skills-grid">
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="50"><i class="fa-solid fa-bezier-curve"></i><h3>Logo Design</h3></div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="100"><i class="fa-solid fa-id-card"></i><h3>Brand Identity</h3></div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="150"><i class="fa-solid fa-share-nodes"></i><h3>Social Media Design</h3></div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="200"><i class="fa-solid fa-computer"></i><h3>Print Design</h3></div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="250"><i class="fa-images fa-solid"></i><h3>Adobe Photoshop</h3></div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="300"><i class="fa-solid fa-pen-nib"></i><h3>CorelDRAW</h3></div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="350"><i class="fa-solid fa-code"></i><h3>Web Development</h3></div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="400"><i class="fa-solid fa-print"></i><h3>Flex Printing</h3></div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 class="title" data-aos="fade-up">Selected Works</h2>
+        <div class="portfolio-grid">
+            <div class="work-card" data-aos="fade-up" data-aos-delay="50">
+                <img src="final1.jpg" alt="Branding Showcase">
+                <div class="work-overlay"><h4>Creative Project 1</h4><p>Identity & Concept</p></div>
+            </div>
+            <div class="work-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="final4.jpg" alt="Visual Design asset">
+                <div class="work-overlay"><h4>Creative Project 2</h4><p>Digital Art</p></div>
+            </div>
+            <div class="work-card" data-aos="fade-up" data-aos-delay="150">
+                <img src="final3.jpg" alt="Print Media Layout">
+                <div class="work-overlay"><h4>Creative Project 3</h4><p>Print & Layout</p></div>
+            </div>
+            <div class="work-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="final2.jpg" alt="Social Media Advertisement">
+                <div class="work-overlay"><h4>Creative Project 4</h4><p>Social Campaign</p></div>
+            </div>
+            <div class="work-card" data-aos="fade-up" data-aos-delay="250">
+                <img src="final5.jpg" alt="Logo & Typography Architecture">
+                <div class="work-overlay"><h4>Creative Project 5</h4><p>Typography Design</p></div>
+            </div>
+            <div class="work-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="final6.jpg" alt="Vector Art Asset">
+                <div class="work-overlay"><h4>Creative Project 6</h4><p>Vector Illustration</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats">
+        <h2 class="title" data-aos="fade-up">Value Delivered</h2>
+        <div class="stats-grid">
+            <div class="stat-box" data-aos="zoom-in" data-aos-delay="50"><h3>4+</h3><p>Years Experience</p></div>
+            <div class="stat-box" data-aos="zoom-in" data-aos-delay="100"><h3>100+</h3><p>Orders Completed</p></div>
+            <div class="stat-box" data-aos="zoom-in" data-aos-delay="150"><h3>100%</h3><p>Quality Work</p></div>
+            <div class="stat-box" data-aos="zoom-in" data-aos-delay="200"><h3>24/7</h3><p>Professional Service</p></div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="title" data-aos="fade-up">Let's Connect</h2>
+        <div class="contact-container">
+            <div class="contact-info" data-aos="fade-right">
+                <div class="contact-method">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div><p>Email Me</p><p>callmeshamroz@gmail.com</p></div>
+                </div>
+                <div class="contact-method">
+                    <i class="fa-solid fa-phone"></i>
+                    <div><p>Call / WhatsApp</p><p>+92 314 4661989</p></div>
+                </div>
+                <div class="contact-method">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div><p>Based In</p><p>Rangers Road, Sialkot, Pakistan</p></div>
+                </div>
+            </div>
+            <div class="contact-info" style="justify-content: center; align-items: flex-start;" data-aos="fade-left">
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
+                    Have a vision or project requiring pristine design solutions and technical engineering execution? Let's construct something monumental together.
+                </p>
+                <button class="btn" id="hireBtn">Hire Me <i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <div class="popup" id="popup">
+        <div class="popup-box">
+            <span class="close" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
+            <h2 class="title">Project Requirements</h2>
+            <form id="requirementsForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="WhatsApp Number" required>
+                <input type="text" placeholder="Project Type (e.g., Brand Identity, UI Design)" required>
+                <input type="text" placeholder="Estimated Budget" required>
+                <textarea rows="4" placeholder="Describe your creative requirements and scope..." required></textarea>
+                <button class="btn" type="submit" style="width: 100%; justify-content: center;">Send Project Brief</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <img id="lightboxImg" src="" alt="Portfolio Expanded view">
+    </div>
+
+    <footer>
+        <p>© 2026 Shamroz Mughal | Graphic Designer | Web Developer</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Interactive Soft Cursor Glow Fluid Motion
+        const glow = document.querySelector('.cursor-glow');
+        window.addEventListener('mousemove', e => {
+            glow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        });
+
+        // Functional Modal Management
+        const hireBtn = document.getElementById('hireBtn');
+        const popup = document.getElementById('popup');
+        const closeBtn = document.getElementById('closeBtn');
+        const reqForm = document.getElementById('requirementsForm');
+
+        hireBtn.addEventListener('click', e => {
+            e.preventDefault();
+            popup.style.display = 'flex';
+        });
+
+        const closePopup = () => popup.style.display = 'none';
+        closeBtn.addEventListener('click', closePopup);
+
+        window.addEventListener('click', e => {
+            if (e.target === popup) closePopup();
+        });
+
+        // Fully functional Submission Mockup behavior
+        reqForm.addEventListener('submit', e => {
+            e.preventDefault();
+            alert('Thank you, Shamroz Mughal will contact you shortly regarding your project request details!');
+            reqForm.reset();
+            closePopup();
+        });
+
+        // Portfolio Image Preview Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        document.querySelectorAll('.work-card img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
